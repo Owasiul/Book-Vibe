@@ -1,4 +1,5 @@
 import React from "react";
+import booksImg from '../../assets/books.jpg'
 
 const Hero = () => {
   return (
@@ -6,17 +7,13 @@ const Hero = () => {
       <div className="hero-content flex flex-col lg:flex-row-reverse items-center justify-around">
        
         <img
-          src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
-          className=" rounded-lg "
+          src={booksImg}
+          className=" rounded-lg object-contain w-lg "
         />
         <div className="lg:w-1/2 w-full">
-          <h1 className="text-5xl font-bold">Books to freshen up your bookshelf</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
-          <button className="btn btn-primary">Get Started</button>
+          <h1 className="text-5xl font-bold lg:w-7/8 w-full">Books to freshen up your bookshelf</h1>
+          
+          <button className="btn btn-primary mt-7">View The List</button>
         </div>
       </div>
     </div>
