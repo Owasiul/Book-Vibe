@@ -1,11 +1,14 @@
 import React from "react";
+import { NavLink } from "react-router";
 
 const NavBar = () => {
-    const links = <div className="lg:gap-10 gap-0 lg:space-y-0 space-y-4 flex lg:flex-row flex-col font-lg font-medium">
-        <li>Home</li>
-        <li>Listed Books</li>
-        <li>Pages to Read</li>
+  const links = (
+    <div className="lg:gap-10 gap-0 lg:space-y-0 space-y-4 flex lg:flex-row flex-col font-lg font-medium">
+      <NavLink to="/">Home</NavLink>
+      <NavLink>Listed Books</NavLink>
+      <NavLink>Pages to Read</NavLink>
     </div>
+  );
   return (
     <div className="navbar bg-white shadow-sm text-black px-4">
       <div className="navbar-start">
@@ -37,9 +40,7 @@ const NavBar = () => {
         <a className="font-bold text-3xl">Book Vibe</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-            {links}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end flex items-center gap-5">
         <a className="btn">Sign in</a>
