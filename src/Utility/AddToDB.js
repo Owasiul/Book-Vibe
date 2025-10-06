@@ -1,4 +1,4 @@
-const getStoredBook = () => {
+export const getStoredBook = () => {
   const storedBook = localStorage.getItem("readList");
   if (storedBook) {
     const storedBookData = JSON.parse(storedBook);
@@ -10,10 +10,10 @@ const getStoredBook = () => {
 export const addToStoreDB = (id) => {
   const storedBookData = getStoredBook();
   if (storedBookData.includes(id)) {
-    alert("This id is already exist");
+    alert("This Book is Already Added");
   } else {
     storedBookData.push(id);
-    const data = JSON.stringify(storedBookData)
-    localStorage.setItem("readList", data)
+    const data = JSON.stringify(storedBookData);
+    localStorage.setItem("readList", data);
   }
 };

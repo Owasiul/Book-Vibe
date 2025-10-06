@@ -11,7 +11,7 @@ const Book = ({ book }) => {
           <img
             src={image}
             alt="Book"
-            className="rounded-xl bg-gray-200 object-contain h-[166px]"
+            className="rounded-xl  object-contain h-[166px]"
           />
         </figure>
         <div className="card-body items-start text-start">
