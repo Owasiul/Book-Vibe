@@ -1,5 +1,6 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router";
+import { addToStoreDB } from "../../Utility/AddToDB";
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -19,9 +20,11 @@ const BookDetails = () => {
     yearOfPublishing,
   } = singleBook;
 
-  // console.log(singleBook)
+  const handleRead = (id) =>{
+    addToStoreDB(id)
+  }
   return (
-    <div className="flex flex-col lg:flex-row  items-start gap-8 p-6 rounded-2xl w-full mx-auto h-screen">
+    <div className="flex flex-col lg:flex-row  items-start gap-8 p-6 rounded-2xl w-full mx-auto h-max">
       {/* Book Image */}
       <div className="w-full lg:w-1/3 bg-gray-300 p-4 rounded-xl">
         <img
@@ -38,40 +41,50 @@ const BookDetails = () => {
           <span className="font-semibold">By :</span> {author}
         </p>
 
-        <p className=" font-medium">{category} </p>
+        <p className=" font-medium border-t border-b py-2">{category} </p>
 
         <p className=" text-sm leading-relaxed">
-          <span className="font-semibold ">Review :</span> {review}
+          <span className="font-semibold text-sm ">Review :</span> {review}
         </p>
 
         {/* Tags */}
-        <div className="flex gap-2 mt-2">
+        <div className="flex gap-2 mt-2 border-b pb-3">
+          <span className="font-semibold text-sm ">Tags:</span>
           {tags.map((tag, index) => (
-              <span className="badge badge-outline badge-success mr-2" key={index}>
-                {tag}{" "}
-              </span>
-            ))}{" "}
+            <span
+              className="badge badge-outline badge-success mr-2"
+              key={index}
+            >
+              {tag}{" "}
+            </span>
+          ))}{" "}
         </div>
 
-        {/* Info Section */}
-        <div className="mt-4 text-sm space-y-1">
-          <p>
-            <span className="font-semibold">Number of Pages:</span> {totalPages}
-          </p>
-          <p>
-            <span className="font-semibold">Publisher:</span> {publisher}
-          </p>
-          <p>
-            <span className="font-semibold">Year of Publishing:</span> {yearOfPublishing}
-          </p>
-          <p>
-            <span className="font-semibold">Rating:</span> {rating}
-          </p>
+        {/* Info Section as Table */}
+        <div className="mt-4 text-sm">
+          <table className="w-96 text-left border-collapse">
+            <tbody>
+              <tr>
+                <th className=" py-1 font-semibold">Number of Pages:</th>
+                <td className="py-1">{totalPages}</td>
+              </tr>
+              <tr>
+                <th className=" py-1 font-semibold">Publisher:</th>
+                <td className="py-1">{publisher}</td>
+              </tr>
+              <tr>
+                <th className=" py-1 font-semibold">Year of Publishing:</th>
+                <td className="py-1">{yearOfPublishing}</td>
+              </tr>
+              <tr>
+                <th className=" py-1 font-semibold">Rating:</th>
+                <td className="py-1">{rating}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-
-        {/* Buttons */}
         <div className="flex gap-4 mt-5">
-          <button className="btn btn-primary px-6">Read</button>
+          <button onClick={() => handleRead(id)} className="btn btn-primary px-6">Read</button>
           <button className="btn btn-outline btn-secondary px-6">
             Wishlist
           </button>
